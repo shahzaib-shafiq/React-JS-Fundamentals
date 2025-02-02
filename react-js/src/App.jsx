@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState,useEffect } from 'react'
 import './App.css'
-
+import { ToastContainer, toast } from 'react-toastify';
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
+  const [counter,setCounter]=useState(0);
+  
+  const addValue=()=>{
+    setCounter(counter+1);
+    toast("Counter is Added");
+  }
+  const removeValue=()=>{
+    if (counter>0){
+      setCounter(counter-1);
+    toast("Counter is Removed");
+    }
+    else{
+      toast("Counter is Cannot be less than 0");
+    
+    }
+  }
+    return (
+      <>
+  <h1>Counter</h1>
+  <h2>Counter Value:{counter}</h2>
+     <ToastContainer />
+     
+     <button onClick={addValue}>Add</button>
+     <br />
+  
+     <button onClick={removeValue}>Remove</button>
+      </>
+    )
+  }
 export default App
